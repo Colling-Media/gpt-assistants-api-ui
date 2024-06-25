@@ -11,10 +11,7 @@ RUN apt update && \
     poetry config virtualenvs.create false && \
     poetry install
 
-EXPOSE 8501
+EXPOSE 8080
 
 COPY . /app
-
-ENTRYPOINT ["streamlit", "run"]
-
-CMD ["app.py"]
+ENTRYPOINT ["streamlit", "run", "app.py", "--server.port=8080", "--server.address=0.0.0.0"]
